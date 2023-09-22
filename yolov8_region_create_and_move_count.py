@@ -81,6 +81,8 @@ def click_event(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:  # Sol tıklama olayını yakala
         coordinates.append((x, y))
         cv2.circle(frame, (x, y), 5, (0, 255, 0), -1)  # Tıklanan yere bir daire çizin
+
+        #cv2.putText(frame , "create region : On", (10,20), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2, cv2.LINE_AA)
         cv2.imshow('Ultralytics YOLOv8 Region Counter Movable', frame)
 
 
@@ -252,6 +254,13 @@ def run(
             cv2.putText(frame, "Moveable: On ", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
         else:
             cv2.putText(frame, "Moveable: Off ", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
+
+
+        if pause :
+            # pause available
+            cv2.putText(frame, "Create Region: On ", (10, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+        else:
+            cv2.putText(frame, "Create Region: Off ", (10, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
         if save_img:
             video_writer.write(frame)
